@@ -1,4 +1,4 @@
-import { Controller, Post, Inject, Body } from '@midwayjs/core';
+import { Controller, Post, Inject, Body, Get } from '@midwayjs/core';
 import { Context } from '@midwayjs/koa';
 import { XqqService } from '../service/xqq.service';
 import { Xqq } from '../entity/xqq_entity';
@@ -14,5 +14,9 @@ export class XqqController {
   @Post('/create')
   async createXqq(@Body() xqq: Xqq) {
     return this.xqqService.createXqq(xqq);
+  }
+  @Get('/get_all')
+  async getXqq() {
+    return this.xqqService.getAllXqqs();
   }
 }

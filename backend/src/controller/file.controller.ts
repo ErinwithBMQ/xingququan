@@ -1,4 +1,12 @@
-import { Controller, Inject, Post, Files, Get, Query } from '@midwayjs/core';
+import {
+  Controller,
+  Inject,
+  Post,
+  Files,
+  Get,
+  Query,
+  Fields,
+} from '@midwayjs/core';
 import { File_upload } from '../entity/file.entity';
 import { FileService } from '../service/file.service';
 import { createReadStream } from 'fs';
@@ -13,8 +21,8 @@ export class HomeController {
   fileService: FileService;
 
   @Post('/upload')
-  async upload(@Files() files) {
-    let id = 0;
+  async upload(@Files() files, @Fields() fields) {
+    let id = 1399;
     for (const file of files)
       id = await this.fileService.addFile(file as File_upload);
 

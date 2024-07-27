@@ -9,6 +9,7 @@ export class FileService {
   fileModel: Repository<File_upload>;
   async addFile(fileUpload: File_upload) {
     await this.fileModel.save(fileUpload);
+    console.log(fileUpload);
     return fileUpload.id;
   }
   async getFile(id: number) {

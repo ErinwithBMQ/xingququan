@@ -1,12 +1,33 @@
-import { Controller, Get, Inject } from '@midwayjs/core';
-import { Context } from '@midwayjs/koa';
+import { Controller, Inject, Post, Files, Fields } from '@midwayjs/core';
 
-@Controller('/protect')
-export class ProtectController {
+@Controller('/')
+export class HomeController {
   @Inject()
-  ctx: Context;
-  @Get('/hello')
-  async index() {
-    return 'hello world';
+  ctx;
+
+  @Post('/upload')
+  async upload(@Files() files, @Fields() fields) {
+    /*
+    files = [
+      {
+        filename: 'test.pdf',        // 文件原名
+        data: '/var/tmp/xxx.pdf',    // mode 为 file 时为服务器临时文件地址
+        fieldname: 'test1',          // 表单 field 名
+        mimeType: 'application/pdf', // mime
+      },
+      {
+        filename: 'test.pdf',        // 文件原名
+        data: ReadStream,    // mode 为 stream 时为服务器临时文件地址
+        fieldname: 'test2',          // 表单 field 名
+        mimeType: 'application/pdf', // mime
+      },
+      // ...file 下支持同时上传多个文件
+    ]
+
+    */
+    return {
+      files,
+      fields,
+    };
   }
 }

@@ -17,4 +17,8 @@ export class XqqService {
       throw new Error(`Failed to save Xqq: ${error.message}`);
     }
   }
+
+  async getAllXqqs(): Promise<Xqq[]> {
+    return await this.xqqModel.find();
+  }
 }

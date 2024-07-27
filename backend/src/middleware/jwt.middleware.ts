@@ -51,6 +51,7 @@ export class JwtMiddleware {
       '/user/secret',
       '/file/upload',
       '/file/show',
+      '/upload',
     ];
     return ignorePathList.includes(ctx.path);
   }
