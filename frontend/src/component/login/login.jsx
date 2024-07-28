@@ -75,8 +75,6 @@ function Login() {
                 </form>
                 <div className="footer">
                     <div className="Remember">
-                        <input type="checkbox" id="rememberMe"/>
-                        <label htmlFor="rememberMe">记住我</label>
                     </div>
                     <button id="Password" onClick={() => (window.location.href = "/register.html")}>
                         去注册

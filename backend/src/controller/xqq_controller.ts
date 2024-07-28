@@ -19,4 +19,10 @@ export class XqqController {
   async getXqq() {
     return this.xqqService.getAllXqqs();
   }
+  @Get('/:id')
+  async show() {
+    const { ctx } = this;
+    const id = ctx.params.id;
+    return this.xqqService.getXqqById(id);
+  }
 }

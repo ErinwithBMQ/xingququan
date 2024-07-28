@@ -21,4 +21,8 @@ export class XqqService {
   async getAllXqqs(): Promise<Xqq[]> {
     return await this.xqqModel.find();
   }
+
+  async getXqqById(id: number): Promise<Xqq | undefined> {
+    return await this.xqqModel.findOne({ where: { id } });
+  }
 }

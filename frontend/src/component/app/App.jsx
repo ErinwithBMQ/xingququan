@@ -1,7 +1,7 @@
 import './App.css';
 
 function App() {
-    //localStorage.removeItem('token');
+
     return (
         <div className="min-h-screen flex flex-col items-center justify-center">
             <div className="mb-16">
