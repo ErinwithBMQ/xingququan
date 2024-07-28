@@ -18,13 +18,34 @@ function ShowXqq() {
             <h1 className={"text-3xl font-semibold text-white title"}>
                 兴趣圈列表
             </h1>
+            <div>
+                {xqq_list.length === 0 && <div className="text-xl font-semibold text-white mt-4">暂无兴趣圈</div>}
+            </div>
             {xqq_list.map((xqq) => (
                 <div className="bg-blue-100 p-4 rounded-xl shadow-xl w-5/6 m-4" key={xqq.id}>
-                    <div className="text-xl font-semibold text-pink-300 mb-4">
-                        {xqq.xqq_name}
+                    <div className={"flex"}>
+                        <div className="text-2xl font-semibold text-pink-300 mb-4">
+                            {xqq.xqq_name}
+                        </div>
+                        <li className="por ml-4 mt-4" style={{
+                            backgroundImage: `url(http://127.0.0.1:7001/file/show?id=${xqq.image_id})`,
+                            // 其他样式保持不变
+                        }}>
+                        </li>
+                        <div className="ml-12">
+                            <a href={`/xqq/${xqq.id}`}>
+                                <button
+                                    className="flex items-center justify-center shadow-xl p-2 rounded-xl cursor-pointer hover:bg-gray-100 w-full">
+                                    <span className="text-xl font-semibold text-blue-200">进入兴趣圈</span>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <div className="text-lg text-blue-400 mb-4">
+                        创建者：{xqq.creator}
                     </div>
                     <div className="text-lg text-blue-300">
-                        {xqq.introduction}
+                        简介：{xqq.introduction}
                     </div>
                 </div>
             ))}

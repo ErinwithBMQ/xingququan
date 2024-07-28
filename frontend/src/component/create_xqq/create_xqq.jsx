@@ -15,6 +15,16 @@ function CreateXqq() {
         event.preventDefault();
         console.log('handleSubmit called'); // 调试日志
 
+        if (!xqq_name || !introduction) {
+            alert('请填写完整的信息');
+            return;
+        }
+
+        if (!file) {
+            alert('请上传头像');
+            return;
+        }
+
         const formData = new FormData();
         if (file) {
             formData.append('file', file);

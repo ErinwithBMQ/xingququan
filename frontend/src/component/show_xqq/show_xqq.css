@@ -1,3 +1,15 @@
 .title {
     text-shadow: 0 0 10px #d2e9ff;
 }
+
+.por {
+    content: '';
+    display: block;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    transform: translate(30px, -30px);
+    
+    background-size: cover;
+    border: 3px solid #fff;
+}
