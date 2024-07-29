@@ -29,10 +29,10 @@ a:hover {
 
 body {
     margin: 0;
-    display: flex;
     place-items: center;
     min-width: 320px;
     min-height: 100vh;
+    background-size: cover;
 }
 
 h1 {
@@ -82,4 +82,5 @@ button:focus-visible {
     align-items: center;
     position: relative; /* 或者使用 sticky, absolute 等 */
     margin-left: 110px;
+    margin-top: 65px;
 }

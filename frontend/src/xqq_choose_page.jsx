@@ -9,7 +9,10 @@ import ShowXqq from "./component/show_xqq/show_xqq.jsx";
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <UserLogin/>
-        <div className="container mt-20"> {/* 添加 show-xqq-container 类 */}
+        <div className={"mt-4 h-3"}>
+
+        </div>
+        <div className="container"> {/* 添加 show-xqq-container 类 */}
             <ShowXqq/>
         </div>
         <div className="fixed top-20 left-10"> {/* 使用 fixed 以及 top 和 left 属性 */}

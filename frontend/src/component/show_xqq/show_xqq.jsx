@@ -39,10 +39,10 @@ function ShowXqq() {
                             </a>
                         </div>
                     </div>
-                    <div className="text-lg text-blue-400 mb-4">
+                    <div className="text-lg font-semibold text-blue-400 mb-4">
                         创建者：{xqq.creator}
                     </div>
-                    <div className="text-lg text-blue-300 whitespace-normal break-words">
+                    <div className="text-lg font-semibold text-blue-300 whitespace-normal break-words">
                         简介：{xqq.introduction}
                     </div>
                 </div>
