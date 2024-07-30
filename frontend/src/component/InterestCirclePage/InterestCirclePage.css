@@ -11,3 +11,25 @@
     height: 100%;
     object-fit: cover;
 }
+
+.contain {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative; /* 或者使用 sticky, absolute 等 */
+    margin-left: 370px;
+    margin-top: 20px;
+}
+
+.title {
+    text-shadow: 0 0 10px #d2e9ff;
+}
+
+.image-responsive {
+    max-width: 50%;
+    height: auto;
+}
+
+.between {
+    margin-right: 445px;
+}

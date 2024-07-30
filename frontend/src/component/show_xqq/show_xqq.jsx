@@ -27,7 +27,7 @@ function ShowXqq() {
                         <div className="por mb-4 mr-4">
                             <img src={`http://127.0.0.1:7001/file/show?id=${xqq.image_id}`} alt="xqq image"/>
                         </div>
-                        <div className="text-2xl font-semibold text-pink-300 mb-4 mr-4">
+                        <div className="text-2xl font-semibold text-pink-300 mb-4 mr-4 w-1/2">
                             名称：{xqq.xqq_name}
                         </div>
                         <div className="ml-12">

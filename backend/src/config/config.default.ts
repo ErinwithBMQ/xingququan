@@ -3,6 +3,7 @@ import { Photo } from '../entity/photo.entity';
 import { User } from '../entity/user.entity';
 import { Xqq } from '../entity/xqq_entity';
 import { File_upload } from '../entity/file.entity';
+import { PostEntity } from '../entity/post.entity';
 import { uploadWhiteList } from '@midwayjs/upload';
 
 export default {
@@ -42,7 +43,7 @@ export default {
         database: 'test',
         synchronize: false,
         logging: true,
-        entities: [Photo, User, Xqq, File_upload],
+        entities: [Photo, User, Xqq, File_upload, PostEntity],
       },
     },
   },

@@ -52,7 +52,6 @@ export class JwtMiddleware {
       '/file/upload',
       '/file/show',
       '/upload',
-      '/xqq/show',
     ];
     return ignorePathList.includes(ctx.path);
   }
