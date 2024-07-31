@@ -25,7 +25,7 @@ function InterestCirclePage() {
             .catch(error => {
                 console.error('Error fetching data:', error);
             });
-    }, []);
+    }, [id]);
 
     return (
         <div>
@@ -68,17 +68,14 @@ function InterestCirclePage() {
                 </div>
                 <div>
                     {post_list.map((post) => (
-                        <div className="bg-blue-100 p-5 rounded-xl shadow-xl m-8" key={post.id}>
+                        <div className="bg-blue-100 p-5 rounded-xl shadow-xl m-8 cursor-pointer" key={post.id}
+                             onClick={() => (window.location.href = `/post/${post.id}`)}>
 
-                            <div className="text-2xl font-semibold text-pink-300 mb-4 mr-4">
+                            <div className="text-3xl font-semibold text-pink-300 mb-4 mr-4">
                                 {post.title}
                             </div>
 
-                            {post.image_id !== 0 && <div className={"mb-4"}>
-                                <img src={`http://127.0.0.1:7001/file/show?id=${post.image_id}`} alt="xqq image"
-                                     className="image-responsive"/>
-                            </div>}
-                            <div className={"flex mb-2"}>
+                            <div className={"flex content-center justify-center mb-2"}>
                                 <div
                                     className="text-lg font-semibold text-blue-400 mb-4 between">
                                     发布者：{post.poster_name}
@@ -87,6 +84,12 @@ function InterestCirclePage() {
                                     发布时间：{post.time}
                                 </div>
                             </div>
+
+                            {post.image_id !== 0 && <div className={"mb-4"}>
+                                <img src={`http://127.0.0.1:7001/file/show?id=${post.image_id}`} alt="xqq image"
+                                     className="image-responsive"/>
+                            </div>}
+
                             <div className="text-lg font-semibold text-blue-300 whitespace-normal break-words">
                                 内容：{post.message}
                             </div>
