@@ -42,4 +42,16 @@ export class PostEntity {
     type: 'date',
   })
   time: Date;
+
+  @Column({
+    name: 'like_number',
+    type: 'int4',
+  })
+  like_number: number;
+
+  @Column({
+    name: 'comment_number',
+    type: 'int4',
+  })
+  comment_number: number;
 }

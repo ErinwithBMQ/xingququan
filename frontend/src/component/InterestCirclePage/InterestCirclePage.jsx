@@ -9,6 +9,7 @@ function InterestCirclePage() {
     const [xqq_message, setXqq_message] = useState([]);
     const [post_list, setPost_list] = useState([]);
 
+
     useEffect(() => {
         axiosInstance.get(`/xqq/${id}`)
             .then(response => {
@@ -92,6 +93,16 @@ function InterestCirclePage() {
 
                             <div className="text-lg font-semibold text-blue-300 whitespace-normal break-words">
                                 内容：{post.message}
+                            </div>
+
+                            <div className={"flex content-center justify-center mt-2"}>
+                                <div
+                                    className="text-lg font-semibold text-blue-400 mb-4 between">
+                                    点赞数：{post.like_number}
+                                </div>
+                                <div className="text-lg font-semibold text-blue-400 mb-4">
+                                    评论数：{post.comment_number}
+                                </div>
                             </div>
                         </div>
                     ))}

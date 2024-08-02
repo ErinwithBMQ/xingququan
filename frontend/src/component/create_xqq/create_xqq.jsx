@@ -64,9 +64,11 @@ function CreateXqq() {
                 creator,
                 active_people,
                 image_id,
+                post_number: 0,
             });
             console.log(response.data);
             alert('创建成功!');
+            window.location.href = "/xqq_choose.html";
         } catch (error) {
             console.error(error);
         }

@@ -35,4 +35,9 @@ export class XqqController {
   async getAllComment(@Query('post_id') post_id: number) {
     return this.postService.getAllCommentByPost_id(post_id);
   }
+
+  @Get('/get_comment_number')
+  async getCommentById(@Query('id') id: number) {
+    return (await this.postService.getAllCommentByPost_id(id)).length;
+  }
 }

@@ -58,4 +58,37 @@ export class UserController {
       }
     }
   }
+
+  @Get('/get_message')
+  async get_message() {
+    const token = this.ctx.request.header.authorization.split(' ')[1];
+    try {
+      this.ctx.state.user = await this.jwtService.verify(
+        token,
+        'YEONJUNBEOMGYU1399' // 确保这里使用的是正确的密钥
+      );
+      const username = this.ctx.state.user.username;
+      const user = await this.userService.findUser(username);
+      console.log(user);
+      return { name: username, image_id: user.photo_id };
+    } catch (error) {
+      if (error) {
+        this.ctx.status = 401;
+        this.ctx.body = { error: 'Invalid token' };
+      } else {
+        this.ctx.status = 500;
+        this.ctx.body = { error: 'Internal server error' };
+      }
+    }
+  }
+
+  @Get('/touxiang')
+  async showTouxiang(@Query('name') name: string) {
+    const a = await this.userService.findUser(name);
+    console.log('Found user in controller:', a);
+    if (a === null) {
+      return false;
+    }
+    return a.photo_id;
+  }
 }

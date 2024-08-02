@@ -8,6 +8,8 @@ function ShowPost() {
     const [post, setPost] = useState([]);
     const [comment_list, setComment_list] = useState([]);
     const {id} = useParams(); // 获取动态参数id
+    const [creator_photo, setCreator_photo] = useState([]);
+
     useEffect(() => {
         axiosInstance.get('/post/get_post_by_id', {params: {id: id}})
             .then(response => {
@@ -24,7 +26,16 @@ function ShowPost() {
             .catch(error => {
                 console.error('Error fetching data:', error);
             });
-    }, [id]);
+
+        axiosInstance.get('/user/touxiang', {params: {name: post.poster_name}})
+            .then(response => {
+                setCreator_photo(response.data);
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }, [id, post.poster_name]);
     return (
         <>
             <div className={"flex w-full"}>
@@ -39,19 +50,28 @@ function ShowPost() {
                         <div className={"text-3xl font-semibold text-white title"}>
                             帖子详情
                         </div>
-                        <div className="bg-blue-100 p-4 rounded-xl shadow-xl w-full m-4">
-                            <div className="text-3xl font-semibold text-pink-300 mb-4 mr-4">
-                                {post.title}
+                        <div className="flex bg-blue-100 p-4 rounded-xl shadow-xl w-full m-4">
+                            <div className="por mb-4 mr-4">
+                                <img src={`http://127.0.0.1:7001/file/show?id=${creator_photo}`}
+                                     alt="xqq image"/>
                             </div>
-                            <div className={"flex content-center justify-center"}>
+                            <div className={"mr-6"}>
+
+                            </div>
+                            <div className={"flex flex-col justify-center"}>
+                                <div className="text-3xl font-semibold text-pink-300 mb-4 ml-4">
+                                    {post.title}
+                                </div>
                                 <div
-                                    className="text-lg font-semibold text-blue-400 mb-4 between_post">
+                                    className="text-xl font-semibold text-blue-400 mb-4">
                                     发布者：{post.poster_name}
                                 </div>
-                                <div className="text-lg font-semibold text-blue-400 mb-4">
+                                <div className="text-xl font-semibold text-blue-400">
                                     发布时间：{post.time}
                                 </div>
                             </div>
+                        </div>
+                        <div className="bg-blue-100 p-4 rounded-xl shadow-xl w-full m-4">
                             {post.image_id !== 0 && <div className={"mb-4"}>
                                 <img src={`http://127.0.0.1:7001/file/show?id=${post.image_id}`} alt="xqq image"
                                      className="image-responsive_post"/>

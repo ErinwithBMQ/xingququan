@@ -1,6 +1,18 @@
 import './xialacaidan.css'
+import {useEffect, useState} from "react";
+import axiosInstance from "../../../axios.config.js";
 
 function Xialacaidan() {
+    const [user_message, setUser_message] = useState([]);
+    useEffect(() => {
+        axiosInstance.get('/user/get_message')
+            .then(response => {
+                setUser_message(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }, []);
     return (
         <ul className="shell">
             <li className="button">
@@ -14,9 +26,9 @@ function Xialacaidan() {
             <li className="button">
                 <span>动态</span>
             </li>
-            <li className="portrait">
-                
-            </li>
+            <div className={"por1 mt-4"}>
+                <img src={`http://127.0.0.1:7001/file/show?id=${user_message.image_id}`} alt="xqq image"/>
+            </div>
             <li className="button">
                 <span>收藏</span>
                 <ul>

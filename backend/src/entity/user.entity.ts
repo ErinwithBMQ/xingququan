@@ -16,4 +16,10 @@ export class User {
     name: 'secret',
   })
   secret: string;
+
+  @Column({
+    type: 'int4',
+    name: 'photo_id',
+  })
+  photo_id: number;
 }

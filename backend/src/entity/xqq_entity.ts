@@ -34,4 +34,10 @@ export class Xqq {
     type: 'int',
   })
   active_people: number;
+
+  @Column({
+    name: 'post_number',
+    type: 'int4',
+  })
+  post_number: number;
 }

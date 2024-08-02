@@ -85,6 +85,8 @@ function CreatePost() {
                 image_id: image_id,
                 title: title,
                 time: formattedTime,
+                like_number: 0,
+                comment_number: 0,
             });
             console.log(response.data);
             alert('帖子发布成功!');
