@@ -33,3 +33,17 @@
 .between {
     margin-right: 300px;
 }
+
+.heart {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 0 solid #fff;
+}
+
+.heart img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

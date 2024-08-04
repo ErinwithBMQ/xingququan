@@ -5,6 +5,7 @@ import { Xqq } from '../entity/xqq_entity';
 import { File_upload } from '../entity/file.entity';
 import { PostEntity } from '../entity/post.entity';
 import { Comment } from '../entity/comment.entity';
+import { Like } from '../entity/like.entity';
 import { uploadWhiteList } from '@midwayjs/upload';
 
 export default {
@@ -42,9 +43,9 @@ export default {
         username: 'postgres',
         password: 'qxy246886420',
         database: 'test',
-        synchronize: true,
+        synchronize: false,
         logging: true,
-        entities: [Photo, User, Xqq, File_upload, PostEntity, Comment],
+        entities: [Photo, User, Xqq, File_upload, PostEntity, Comment, Like],
       },
     },
   },

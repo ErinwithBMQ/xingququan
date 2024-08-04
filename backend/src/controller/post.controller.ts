@@ -3,6 +3,7 @@ import { Context } from '@midwayjs/koa';
 import { PostService } from '../service/post.service';
 import { PostEntity } from '../entity/post.entity';
 import { Comment } from '../entity/comment.entity';
+import { Like } from '../entity/like.entity';
 
 @Controller('/post')
 export class XqqController {
@@ -27,8 +28,12 @@ export class XqqController {
   }
 
   @Post('/comment')
-  async createCommet(@Body() comment: Comment) {
-    return this.postService.createComment(comment);
+  async createComment(@Body() comment: Comment) {
+    await this.postService.createComment(comment);
+    const comments = await this.postService.getAllCommentByPost_id(
+      comment.post_id
+    );
+    return this.postService.updatePostById(comment.post_id, comments.length);
   }
 
   @Get('/get_all_comment')
@@ -39,5 +44,22 @@ export class XqqController {
   @Get('/get_comment_number')
   async getCommentById(@Query('id') id: number) {
     return (await this.postService.getAllCommentByPost_id(id)).length;
+  }
+
+  @Post('/like')
+  async likePost(@Body() like_message: Like) {
+    const like = await this.postService.findLikeByPostIdAndCreator(
+      like_message.creator,
+      like_message.post_id
+    );
+
+    console.log(like, like_message);
+
+    if (like === undefined || like === null) {
+      await this.postService.createLike(like_message);
+      await this.postService.updatePostLikeById(like_message.post_id, 1);
+      return true;
+    }
+    return false;
   }
 }
