@@ -9,6 +9,8 @@ function ShowPost() {
     const [comment_list, setComment_list] = useState([]);
     const {id} = useParams(); // 获取动态参数id
     const [creator_photo, setCreator_photo] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [user_name, setUser_name] = useState([]);
 
     useEffect(() => {
         axiosInstance.get('/post/get_post_by_id', {params: {id: id}})
@@ -35,7 +37,38 @@ function ShowPost() {
             .catch(error => {
                 console.error('Error fetching data:', error);
             });
-    }, [id, post.poster_name]);
+
+        axiosInstance.get('/user/get_name')
+            .then(response => {
+                setUser_name(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }, [id, post.poster_name, loading]);
+
+    const handleLikeClick = (postId) => {
+        setLoading(true); // 开始加载
+
+        // 假设有一个 API 可以用来更新点赞数
+        axiosInstance.post(`/post/like`, {creator: user_name, post_id: postId})
+            .then(response => {
+                console.log(response.data)
+                // 成功后刷新页面
+                if (response.data === true) {
+                    window.location.reload();
+                } else {
+                    alert('你已点赞过此贴。');
+                }
+            })
+            .catch(error => {
+                console.error('Error liking post:', error);
+            })
+            .finally(() => {
+                setLoading(false); // 结束加载
+            });
+    };
+
     return (
         <>
             <div className={"flex w-full"}>
@@ -71,13 +104,34 @@ function ShowPost() {
                                 </div>
                             </div>
                         </div>
+                        <div className={"flex bg-red-50 p-2 rounded-xl shadow-lg justify-between w-full"}>
+                            <div className={"flex content-center justify-center"}>
+                                <div
+                                    className="text-lg font-semibold text-red-300 mr-8">
+                                    点赞数：{post.like_number}
+                                </div>
+                                <div className="text-lg font-semibold text-orange-300 ml-4">
+                                    评论数：{post.comment_number}
+                                </div>
+                            </div>
+                            <div>
+                                <img src={"/heart.png"}
+                                     alt="xqq image"
+                                     className={"heart cursor-pointer"}
+                                     onClick={() => handleLikeClick(post.id)}
+                                />
+                            </div>
+
+                        </div>
                         <div className="bg-blue-100 p-4 rounded-xl shadow-xl w-full m-4">
                             {post.image_id !== 0 && <div className={"mb-4"}>
                                 <img src={`http://127.0.0.1:7001/file/show?id=${post.image_id}`} alt="xqq image"
                                      className="image-responsive_post"/>
                             </div>}
-                            <div className="text-lg font-semibold text-blue-300 whitespace-normal break-words">
-                                内容：{post.message}
+                            <div className={"bg-white p-2 rounded-xl shadow-md w-full justify-center content-center"}>
+                                <div className="text-lg font-semibold text-blue-300 whitespace-normal break-words">
+                                    {post.message}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -88,7 +142,8 @@ function ShowPost() {
                         <span className="text-xl font-semibold text-pink-200">发表评论</span>
                     </button>
                 </div>
-                <div className="flex flex-col bg-pink-100 items-center shadow-2xl p-4 rounded-xl w-3/5 h-full">
+                <div
+                    className="flex flex-col bg-pink-100 items-center shadow-2xl p-4 rounded-xl w-3/5 h-full">
                     <div>
                         <div className={"text-3xl font-semibold text-white title"}>
                             评论区
@@ -110,8 +165,12 @@ function ShowPost() {
                                         </div>
                                     </div>
 
-                                    <div className="text-lg font-semibold text-blue-300 whitespace-normal break-words">
-                                        内容：{comment.message}
+                                    <div
+                                        className={"bg-white p-2 rounded-xl shadow-md w-full justify-center content-center"}>
+                                        <div
+                                            className="text-lg font-semibold text-blue-300 whitespace-normal break-words">
+                                            {comment.message}
+                                        </div>
                                     </div>
                                 </div>
                             ))}

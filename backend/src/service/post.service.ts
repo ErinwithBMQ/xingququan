@@ -76,4 +76,10 @@ export class PostService {
     });
     return result.affected; // 返回受影响的行数
   }
+
+  async getAllPostByPoster(name: any): Promise<PostEntity[]> {
+    return await this.postModel.find({
+      where: { poster_name: name },
+    });
+  }
 }

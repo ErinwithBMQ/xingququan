@@ -91,6 +91,12 @@ function InterestCirclePage() {
                 >
                     <span className="text-xl font-semibold text-pink-200">发表帖子</span>
                 </button>
+                <button
+                    className="flex items-center justify-center shadow-2xl p-4 rounded-xl cursor-pointer hover:bg-gray-100 w-1/4 mt-4"
+                    onClick={() => (window.location.href = `/xqq/${xqq_message.id}/active`)}
+                >
+                    <span className="text-xl font-semibold text-pink-200">用户活跃情况</span>
+                </button>
             </div>
             <div className="flex flex-col bg-pink-100 items-center shadow-2xl p-4 rounded-xl w-3/4 contain">
                 <div className={"text-3xl font-semibold text-white title"}>
@@ -123,7 +129,7 @@ function InterestCirclePage() {
                             </div>}
 
                             <button
-                                className={"flex flex-col bg-white p-2 rounded-xl shadow-xl mb-4 cursor-pointer w-full justify-center content-center"}
+                                className={"flex flex-col bg-white p-2 rounded-xl shadow-xl mb-4 cursor-pointer w-full justify-center content-center hover:bg-gray-100"}
                                 onClick={() => (window.location.href = `/post/${post.id}`)}>
                                 <div
                                     className="text-lg font-semibold text-blue-300 whitespace-normal break-words  justify-center content-center">
@@ -134,10 +140,10 @@ function InterestCirclePage() {
                             <div className={"flex mt-2 bg-red-50 p-2 rounded-xl shadow-lg justify-between"}>
                                 <div className={"flex content-center justify-center"}>
                                     <div
-                                        className="text-lg font-semibold text-blue-400 mr-8">
+                                        className="text-lg font-semibold text-red-300 mr-8">
                                         点赞数：{post.like_number}
                                     </div>
-                                    <div className="text-lg font-semibold text-blue-400 ml-4">
+                                    <div className="text-lg font-semibold text-orange-300 ml-4">
                                         评论数：{post.comment_number}
                                     </div>
                                 </div>

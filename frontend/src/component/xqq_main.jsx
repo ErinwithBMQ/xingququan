@@ -6,6 +6,7 @@ import App from './app/App.jsx';
 import CreatePost from "./create_post/create_post.jsx";
 import ShowPost from "./post/post.jsx";
 import CreateComment from "./Comment/Comment.jsx";
+import Active from "./active/active.jsx";
 
 function XqqMain() {
     return (
@@ -16,6 +17,7 @@ function XqqMain() {
                 <Route path="/xqq/:id/post" element={<CreatePost/>}/>
                 <Route path="/post/:id" element={<ShowPost/>}/>
                 <Route path="/post/:id/comment" element={<CreateComment/>}/>
+                <Route path="/xqq/:id/active" element={<Active/>}/>
             </Routes>
         </Router>
     );

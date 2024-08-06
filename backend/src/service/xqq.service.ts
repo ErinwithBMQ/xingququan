@@ -1,7 +1,7 @@
 import { Provide } from '@midwayjs/core';
 import { InjectEntityModel } from '@midwayjs/typeorm';
 import { Repository } from 'typeorm';
-import { Xqq } from '../entity/xqq_entity';
+import { Xqq } from '../entity/xqq.entity';
 
 @Provide()
 export class XqqService {

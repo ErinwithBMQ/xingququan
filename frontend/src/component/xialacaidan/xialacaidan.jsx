@@ -16,15 +16,16 @@ function Xialacaidan() {
     return (
         <ul className="shell">
             <li className="button">
-                <span>搜索帖子</span>
+                <span>我的消息</span>
                 <ul>
                     <li>回复我的</li>
                     <li>收到的赞</li>
-                    <li>我的消息</li>
                 </ul>
             </li>
             <li className="button">
-                <span>我的帖子</span>
+                <span onClick={() => {
+                    window.location.href = 'mypost.html';
+                }}>我的帖子</span>
             </li>
             <div className={"por1 mt-4"}>
                 <img src={`http://127.0.0.1:7001/file/show?id=${user_message.image_id}`} alt="xqq image"/>
@@ -40,7 +41,6 @@ function Xialacaidan() {
                 <span>关于我</span>
                 <ul>
                     <li>个人信息</li>
-                    <li>我的收藏</li>
                     <li onClick={() => {
                         window.location.href = `/`;
                         localStorage.removeItem('token');

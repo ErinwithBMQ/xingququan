@@ -1,7 +1,7 @@
 import { Controller, Post, Inject, Body, Get } from '@midwayjs/core';
 import { Context } from '@midwayjs/koa';
 import { XqqService } from '../service/xqq.service';
-import { Xqq } from '../entity/xqq_entity';
+import { Xqq } from '../entity/xqq.entity';
 
 @Controller('/xqq')
 export class XqqController {

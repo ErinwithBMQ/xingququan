@@ -1,7 +1,7 @@
 import { MidwayConfig } from '@midwayjs/core';
 import { Photo } from '../entity/photo.entity';
 import { User } from '../entity/user.entity';
-import { Xqq } from '../entity/xqq_entity';
+import { Xqq } from '../entity/xqq.entity';
 import { File_upload } from '../entity/file.entity';
 import { PostEntity } from '../entity/post.entity';
 import { Comment } from '../entity/comment.entity';

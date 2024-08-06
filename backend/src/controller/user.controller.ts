@@ -1,4 +1,5 @@
 import { UserService } from '../service/user.service';
+import { PostService } from '../service/post.service';
 import { User } from '../entity/user.entity';
 import { Body, Controller, Get, Inject, Post, Query } from '@midwayjs/core';
 import { Context } from '@midwayjs/koa';
@@ -14,6 +15,9 @@ export class UserController {
 
   @Inject()
   jwtService: JwtService;
+
+  @Inject()
+  postService: PostService;
 
   @Post('/create_user')
   async create(@Body() user: User) {
@@ -90,5 +94,12 @@ export class UserController {
       return false;
     }
     return a.photo_id;
+  }
+
+  @Get('/get_user_post')
+  async get_user_post(@Query('name') name: string) {
+    const a = await this.postService.getAllPostByPoster(name);
+    console.log('Found user in controller:', a);
+    return a;
   }
 }
