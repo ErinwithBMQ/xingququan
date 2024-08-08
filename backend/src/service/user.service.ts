@@ -29,4 +29,24 @@ export class UserService {
   async createUser(user: User) {
     return this.userModel.save(user); //上传user数据
   }
+
+  async updatePhoto_id(id: number, updatedImage_id: number): Promise<number> {
+    const result = await this.userModel
+      .createQueryBuilder('user')
+      .update()
+      .set({ photo_id: updatedImage_id })
+      .where('id = :id', { id })
+      .execute();
+    return result.affected; // 返回受影响的行数
+  }
+
+  async updateSecret(id: number, new_secret: string) {
+    const result = await this.userModel
+      .createQueryBuilder('user')
+      .update()
+      .set({ secret: new_secret })
+      .where('id = :id', { id })
+      .execute();
+    return result.affected;
+  }
 }

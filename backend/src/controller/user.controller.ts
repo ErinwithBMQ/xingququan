@@ -102,4 +102,43 @@ export class UserController {
     console.log('Found user in controller:', a);
     return a;
   }
+
+  @Get('/get_user_comment')
+  async get_user_comment(@Query('name') name: string) {
+    const a = await this.postService.getAllCommentByCreator(name);
+    console.log('Found user in controller:', a);
+    return a;
+  }
+
+  @Get('/get_user_likepost')
+  async get_user_like(@Query('name') name: string) {
+    return await this.postService.getAllLikePostByCreator(name);
+  }
+
+  @Get('/get_others_like')
+  async get_others_like(@Query('name') name: string) {
+    return await this.postService.getAllLikeByName(name);
+  }
+
+  @Get('/get_others_comment')
+  async get_others_comment(@Query('name') name: string) {
+    return await this.postService.getAllCommentByName(name);
+  }
+
+  @Post('/update_image')
+  async update_image(@Body() body: { name: string; photo_id: number }) {
+    const user = await this.userService.findUser(body.name);
+    return await this.userService.updatePhoto_id(user.id, body.photo_id);
+  }
+
+  @Post('/update_secret')
+  async update_secret(
+    @Body() body: { name: string; old_secret: string; new_secret: string }
+  ) {
+    const user = await this.userService.findUser(body.name);
+    if (user.secret !== body.old_secret) {
+      return false;
+    }
+    return await this.userService.updateSecret(user.id, body.new_secret);
+  }
 }

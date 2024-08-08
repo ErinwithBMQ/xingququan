@@ -82,4 +82,64 @@ export class PostService {
       where: { poster_name: name },
     });
   }
+
+  async getAllCommentByCreator(name: any): Promise<Comment[]> {
+    return await this.commentModel.find({
+      where: { creator: name },
+    });
+  }
+
+  async getAllLikePostByCreator(name: string): Promise<PostEntity[]> {
+    // 获取所有点赞记录
+    const likes = await this.likeModel.find({
+      where: { creator: name },
+    });
+    // 提取所有点赞记录中的 post_id 列表
+    const postIds = likes.map(like => like.post_id);
+    // 使用 postIds 列表批量获取帖子内容
+    const posts = await Promise.all(
+      postIds.map(async postId => await this.getPostById(postId))
+    );
+    // 过滤掉未找到的帖子
+    return posts.filter(post => post !== undefined) as PostEntity[];
+  }
+
+  async getAllLikeByName(name: string): Promise<Like[]> {
+    // 获取这个人发布的所有帖子
+    const posts = await this.postModel.find({
+      where: { poster_name: name },
+    });
+
+    // 提取所有帖子的 id
+    const postIds = posts.map(post => post.id);
+
+    // 对于每个帖子的 id，获取该帖子的所有点赞信息
+    const likesPromises = postIds.map(
+      async postId =>
+        await this.likeModel.find({
+          where: { post_id: postId },
+        })
+    );
+
+    // 等待所有点赞信息的 Promise 完成
+    const allLikes = await Promise.all(likesPromises);
+
+    // 使用 reduce 方法将所有点赞信息合并成一个列表
+    return allLikes.reduce((acc, val) => acc.concat(val), []);
+  }
+
+  async getAllCommentByName(name: string): Promise<Comment[]> {
+    const posts = await this.postModel.find({
+      where: { poster_name: name },
+    });
+    const postIds = posts.map(post => post.id);
+    const commentsPromises = postIds.map(
+      async postId =>
+        await this.commentModel.find({
+          where: { post_id: postId },
+        })
+    );
+    const allComments = await Promise.all(commentsPromises);
+    return allComments.reduce((acc, val) => acc.concat(val), []);
+  }
 }

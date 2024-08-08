@@ -30,7 +30,7 @@ function InterestCirclePage() {
 
         axiosInstance.get('/user/get_name')
             .then(response => {
-                setUser_name(response.data);
+                setUser_name(response.data.username);
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
@@ -130,7 +130,7 @@ function InterestCirclePage() {
 
                             <button
                                 className={"flex flex-col bg-white p-2 rounded-xl shadow-xl mb-4 cursor-pointer w-full justify-center content-center hover:bg-gray-100"}
-                                onClick={() => (window.location.href = `/post/${post.id}`)}>
+                                onClick={() => (window.location.href = `/post2/${post.id}`)}>
                                 <div
                                     className="text-lg font-semibold text-blue-300 whitespace-normal break-words  justify-center content-center">
                                     {post.message}

@@ -1,9 +1,9 @@
-import './mypost.css'
+import './mylike.css'
 // eslint-disable-next-line no-unused-vars
 import React, {useEffect, useState} from "react";
 import axiosInstance from '/axios.config.js';
 
-function MyPost() {
+function MyLike() {
     const [post_list, setPostList] = useState([]);
 
     useEffect(() => {
@@ -12,7 +12,7 @@ function MyPost() {
                 const newName = response.data.username;
                 console.log(newName);
 
-                return axiosInstance.get('/user/get_user_post', {params: {name: newName}});
+                return axiosInstance.get('/user/get_user_likepost', {params: {name: newName}});
             })
             .then(response => {
                 setPostList(response.data);
@@ -36,21 +36,30 @@ function MyPost() {
                 <div
                     className="flex flex-col bg-pink-100 items-center shadow-2xl p-4 rounded-xl w-full h-full">
                     <div className={"text-3xl font-semibold text-white title0"}>
-                        我的帖子
+                        我的点赞
                     </div>
                     <div>
                         {post_list.length === 0 &&
-                            <div className="text-xl font-semibold text-white mt-4">暂无帖子</div>}
+                            <div className="text-xl font-semibold text-white mt-4">暂无点赞信息</div>}
                     </div>
                     <div>
                         {post_list.map((post) => (
                             <div className="bg-blue-100 p-5 rounded-xl shadow-xl m-8 mywidth" key={post.id}>
+                                <div className={"flex mb-4 bg-red-50 p-2 rounded-xl w-fit"}>
+                                    <div
+                                        className="text-lg font-semibold text-red-300">
+                                        你点赞了
+                                    </div>
+                                </div>
 
                                 <div className="text-3xl font-semibold text-pink-300 mb-4 mr-4">
                                     {post.title}
                                 </div>
 
-                                <div className={"flex content-center justify-center mb-2"}>
+                                <div className={"flex content-center justify-between mb-2"}>
+                                    <div className="text-lg font-semibold text-blue-400 mb-4">
+                                        发布人：{post.poster_name}
+                                    </div>
                                     <div className="text-lg font-semibold text-blue-400 mb-4">
                                         发布时间：{post.time}
                                     </div>
@@ -91,4 +100,4 @@ function MyPost() {
     );
 }
 
-export default MyPost;
+export default MyLike;

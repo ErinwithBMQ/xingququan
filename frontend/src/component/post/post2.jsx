@@ -4,7 +4,7 @@ import axiosInstance from '/axios.config.js';
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 
-function ShowPost() {
+function ShowPost2() {
     const [post, setPost] = useState([]);
     const [comment_list, setComment_list] = useState([]);
     const {id} = useParams(); // 获取动态参数id
@@ -75,7 +75,7 @@ function ShowPost() {
                 <div className={"flex flex-col lr_between"}>
                     <button
                         className="flex items-center justify-center shadow-2xl p-4 rounded-xl cursor-pointer hover:bg-gray-100 w-1/6 mb-8"
-                        onClick={() => history.go(-1)}
+                        onClick={() => (window.location.href = `/xqq/${post.xqq_id}`)}
                     >
                         <span className="text-xl font-semibold text-pink-200">返回</span>
                     </button>
@@ -183,4 +183,4 @@ function ShowPost() {
     )
 }
 
-export default ShowPost;
+export default ShowPost2;

@@ -62,7 +62,7 @@ function CreateComment() {
         <div className={"flex flex-col justify-center items-center h-screen"}>
             <button
                 className="fixed top-20 left-10 w-1/6 shadow-2xl p-4 rounded-xl cursor-pointer hover:bg-gray-100 mb-40"
-                onClick={() => (window.location.href = `/post/${post_id}`)}
+                onClick={() => (window.location.href = `/post2/${post_id}`)}
             >
                 <span className="text-xl font-semibold text-blue-200">返回</span>
             </button>

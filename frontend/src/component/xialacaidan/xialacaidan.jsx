@@ -18,8 +18,14 @@ function Xialacaidan() {
             <li className="button">
                 <span>我的消息</span>
                 <ul>
-                    <li>回复我的</li>
-                    <li>收到的赞</li>
+                    <li onClick={() => {
+                        window.location.href = 'others_comment.html';
+                    }}>评论我的
+                    </li>
+                    <li onClick={() => {
+                        window.location.href = 'others_like.html';
+                    }}>收到的赞
+                    </li>
                 </ul>
             </li>
             <li className="button">
@@ -33,14 +39,23 @@ function Xialacaidan() {
             <li className="button">
                 <span>我的互动</span>
                 <ul>
-                    <li>我的点赞</li>
-                    <li>我的评论</li>
+                    <li onClick={() => {
+                        window.location.href = 'mylike.html';
+                    }}>我的点赞
+                    </li>
+                    <li onClick={() => {
+                        window.location.href = 'mycomment.html';
+                    }}>我的评论
+                    </li>
                 </ul>
             </li>
             <li className="button">
                 <span>关于我</span>
                 <ul>
-                    <li>个人信息</li>
+                    <li onClick={() => {
+                        window.location.href = '/home';
+                    }}>个人信息
+                    </li>
                     <li onClick={() => {
                         window.location.href = `/`;
                         localStorage.removeItem('token');
