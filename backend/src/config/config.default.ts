@@ -1,5 +1,4 @@
 import { MidwayConfig } from '@midwayjs/core';
-import { Photo } from '../entity/photo.entity';
 import { User } from '../entity/user.entity';
 import { Xqq } from '../entity/xqq.entity';
 import { File_upload } from '../entity/file.entity';
@@ -41,11 +40,11 @@ export default {
         host: '127.0.0.1',
         port: 5432,
         username: 'postgres',
-        password: 'qxy246886420',
-        database: 'test',
-        synchronize: false,
+        password: 'password', // 改成你的数据库密码
+        database: 'test', // 改成你的数据库名
+        synchronize: true,
         logging: true,
-        entities: [Photo, User, Xqq, File_upload, PostEntity, Comment, Like],
+        entities: [User, Xqq, File_upload, PostEntity, Comment, Like],
       },
     },
   },

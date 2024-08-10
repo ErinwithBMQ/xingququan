@@ -14,19 +14,6 @@ function App() {
                 >
                     <span className="text-xl font-semibold text-blue-200">立即注册/登录</span>
                 </button>
-                <button
-                    className="flex items-center justify-center shadow-2xl p-4 rounded-xl cursor-pointer hover:bg-gray-100"
-                    onClick={() => (window.location.href = "/todo.html")}
-                >
-                    <span className="text-xl font-semibold text-blue-200">进入todo</span>
-                </button>
-
-                <button
-                    className="flex items-center justify-center shadow-2xl p-4 rounded-xl cursor-pointer hover:bg-gray-100"
-                    onClick={() => (window.location.href = "/liuyan.html")}
-                >
-                    <span className="text-xl font-semibold text-blue-200">进入留言板</span>
-                </button>
 
                 <button
                     className="flex items-center justify-center shadow-2xl p-4 rounded-xl cursor-pointer hover:bg-gray-100"

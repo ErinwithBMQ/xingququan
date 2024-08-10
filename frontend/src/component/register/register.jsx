@@ -7,6 +7,7 @@ function Register() {
 
     const [name, setName] = useState('');
     const [secret, setSecret] = useState('');
+    const [secret2, setSecret2] = useState('');
     const [file, setFile] = useState(null);
 
     const handleFileChange = (e) => {
@@ -48,6 +49,11 @@ function Register() {
         const formData = new FormData();
         if (file) {
             formData.append('file', file);
+        }
+
+        if (secret !== secret2) {
+            alert('两次输入的密码不一致。');
+            return;
         }
 
         let image_id = 0;
@@ -99,6 +105,14 @@ function Register() {
                         placeholder="Password"
                         value={secret}
                         onChange={(e) => setSecret(e.target.value)}
+                    />
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="再次确认密码"
+                        value={secret2}
+                        onChange={(e) => setSecret2(e.target.value)}
                     />
 
                     <div className="flex mt-4">

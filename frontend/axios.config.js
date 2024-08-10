@@ -1,9 +1,8 @@
-// axios.config.js
 import axios from 'axios';
 
 // 创建axios实例
 const axiosInstance = axios.create({
-    baseURL: 'http://127.0.0.1:7001/', // 设置基础URL
+    baseURL: 'http://127.0.0.1:7001', // 设置基础URL
 });
 
 // 设置请求拦截器
@@ -37,8 +36,5 @@ axiosInstance.interceptors.response.use(
     }
 )
 
-// 导出axiosInstance
 export default axiosInstance;
 
-
-// 现在你可以使用axiosInstance来发送请求，所有请求都会自动带上Authorization头部
