@@ -18,3 +18,9 @@ https://github.com/ErinwithBMQ/xingququan-frontend
 与
 https://github.com/ErinwithBMQ/xingququan-backend
 。
+
+### 项目文档：
+https://flowus.cn/erinwithbmq/share/7bcee6b9-c6e9-4d96-a71a-ea0406b7370f?code=2ZNT5J
+【FlowUs 息流】前后端项目：兴趣圈 | 文档+技术栈介绍
+
+> 项目编写者：ErinwithBMQ

@@ -15,6 +15,7 @@ export default {
   },
   cors: {
     origin: '*',
+    host: '0.0.0.0',
   },
   jwt: {
     secret: 'YEONJUNBEOMGYU1399', // 密钥
